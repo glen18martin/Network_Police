@@ -1,0 +1,9 @@
+
+-----WindowName: keylogger
+
+-----WindowName: WhatsApp
+DOES THIS WORK
+AWESOME SO IF I CLOSE THE CMD RUNNING THE PYTHON IT TERMINATES THE PROGRAM RIGHT
+
+-----WindowName: WhatsApp
+CURRY 
