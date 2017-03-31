@@ -27,9 +27,9 @@ if(mysql_num_rows($result) == 0) {
      //changesend
 
 } else {
-   // echo "Found user Successfully";
+   echo "Found user Successfully";
   
-header("Location:main.html");
+header("Location:http://localhost/Network_Police/main.html");
 
 
 
