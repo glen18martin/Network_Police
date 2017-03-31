@@ -17,8 +17,9 @@ module.exports = function (io) {
 //secure: true,
 */
 
-  socket.on(get:systemstatus,function(){
-    socket.emit('on:sytemstatus',{id:{1,2,3,4}});
+  socket.on('get:systemstatus',function(){
+    console.log("asdasd");
+    socket.emit('on:systemstatus',{id:[1,2,3,4]});
   });
 
 

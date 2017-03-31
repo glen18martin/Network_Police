@@ -9,6 +9,6 @@
   socket.emit('get:systemstatus');
 
   socket.on('on:systemstatus',function(data){
-    alert(data);
+    console.log(data);
 
   });
