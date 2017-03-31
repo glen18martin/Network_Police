@@ -2,6 +2,7 @@ module.exports = function (io) {
 
   var base = io.of('/base');
 
+
   base.on('connection', function (socket) {
 
     console.log("client connected");
@@ -16,7 +17,9 @@ module.exports = function (io) {
 //secure: true,
 */
 
-
+  socket.on(get:systemstatus,function(){
+    socket.emit('on:sytemstatus',{id:{1,2,3,4}});
+  });
 
 
       socket.on('disconnect', function(){
