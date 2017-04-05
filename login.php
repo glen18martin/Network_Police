@@ -22,14 +22,14 @@ if(mysql_num_rows($result) == 0) {
 
 //changes
 
-     header("Location:index.html");
+     header("Location:index.php");
 
      //changesend
 
 } else {
    echo "Found user Successfully";
   
-header("Location:http://localhost/Network_Police/main.html");
+header("Location:http://localhost/Network_Police/main.php");
 
 
 
