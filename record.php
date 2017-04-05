@@ -218,9 +218,9 @@
                              echo array_values($obj)[$id]['pr'][$i]['path'];
                              echo "</th>";
 
-                             //echo "<th>";
-                             // echo array_values($obj)[$id]['pr'][$i]['hash'];
-                             //echo "</th>";
+                             echo "<th>";
+                             echo array_values($obj)[$id]['pr'][$i]['hash'];
+                             echo "</th>";
                             echo "</tr>";
 
                           }

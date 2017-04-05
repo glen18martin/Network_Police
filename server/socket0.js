@@ -39,7 +39,7 @@ io.on('connection', function(socket) {
 
     setInterval(function() { 
         socket.emit('get_memory_proc');
-    }, 60000);
+    }, 30000);
     
     
     
@@ -61,12 +61,10 @@ io.on('connection', function(socket) {
     });
     socket.on('cpu_usage_response', function(data) {
         clientList[socket].cu = data;
-        
     });
 
     socket.on('memory_proc_response', function(data) {
         clientList[socket].pr = data;
-        
     });
 
 

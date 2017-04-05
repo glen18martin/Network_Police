@@ -83,7 +83,7 @@
 
                         for($i = 0; $i < count($obj); $i++) {
                             echo '<div class="gallery_product col-lg-2 col-md-2 col-sm-2 col-xs-4 filter ON">';
-                            echo '<img src="img/on.png" class="img-responsive"><a style="color:white;font-weight:bold" href="record.php?id=' .$i. '">'. array_values($obj)[0]["id"] . '</a>';
+                            echo '<img src="img/on.png" class="img-responsive"><a style="color:white;font-weight:bold" href="record.php?id=' .$i. '">'. array_values($obj)[$i]["id"] . '</a>';
                             echo '</div>';
                         }
                         
@@ -151,6 +151,8 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 	<script src="js/pc.js"></script>
+    
+    <script src="js/monitor.js"></script>
     <script>
         require('./js/renderer.js')
     </script>
