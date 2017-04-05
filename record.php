@@ -247,7 +247,7 @@
     </div>
 
 </div>
-    <script>var pcid = <?php echo $i; ?>;</script>
+    <script>var pcid = <?php echo $_GET['id']; ?>;</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="js/bootstrap.min.js"></script>

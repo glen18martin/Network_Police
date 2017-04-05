@@ -12,8 +12,8 @@ clientid = file.read()
 
 print("Starting npd... @ " + clientid)
 
-logging.getLogger('socketIO-client').setLevel(logging.DEBUG)
-logging.basicConfig()
+#logging.getLogger('socketIO-client').setLevel(logging.DEBUG)
+#logging.basicConfig()
 
 
     #socketIO.emit('bbb', {'xxx': 'yyy'}, on_bbb_response)
@@ -36,6 +36,8 @@ def send_system_status(*args):
     
 def kill_process(pid):
     print("KILLING pid " + pid) 
+    p = psutil.Process(pid)
+    p.terminate()
 
 def send_disk_usage(*args):
     du = psutil.disk_usage('/')

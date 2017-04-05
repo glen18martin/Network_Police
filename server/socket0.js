@@ -4,14 +4,17 @@ var io = require('socket.io')(1337);
 var fs = require('fs');
 
 
-var clientList = {}
+var clientList = {};
+
 //I'm using incremental id's on the js side for socket counting, seding that same value to kill processes here... a problemo!
 //Change some value to null in the clientList array, dont remove any clients in the middle when clients disconnect
 
+var sockets = [];
+var counter = 0;
 
 io.on('connection', function(socket) {
 
-
+    sockets[counter++] = socket;
     //For the Panel
 
     socket.on('get_client_data', function(data) {
@@ -19,15 +22,17 @@ io.on('connection', function(socket) {
     });
 
     socket.on('kill_process', function(data) {
-        console.log("killing process " + data);
+        console.log("killing process " + data.pid + " on " + data.id);
 
+        sockets[parseInt(data.id)].emit("client_kill_process", data.pid);
+        /*
         var i = 0;
         for (var client in clientList) {
             if(i++ == data.id) {
-                theSocketWeNeed = clientList[client].s.emit("client_kill_process", data.pid);
+               theSocketWeNeed = clientList[client].s.emit("client_kill_process", data.pid);
             }
         }
-
+        */
 
         //clientList[data].
         socket.disconnect();
@@ -55,6 +60,12 @@ io.on('connection', function(socket) {
 
     },2000);
 
+
+    //run once
+    setTimeout(function() { 
+        socket.emit('get_memory_proc');
+    }, 2000);
+
     setInterval(function() { 
         socket.emit('get_memory_proc');
     }, 30000);
@@ -63,9 +74,11 @@ io.on('connection', function(socket) {
     
     socket.on('ident', function(data) {
         console.log("Online " + data);
-        clientList[socket] = { id: data, du: 0, mu: 0, nu: 0, cu:0, pr:0, s: socket};
+        clientList[socket] = { id: data, du: 0, mu: 0, nu: 0, cu:0, pr:0};
     });
 
+    
+    
 
     socket.on('disk_usage_response', function(data) {
         clientList[socket].du = data;
