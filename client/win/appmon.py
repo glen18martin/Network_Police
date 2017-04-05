@@ -30,4 +30,5 @@ class AppMon:
                     hash = line.decode("UTF-8").replace(" ", "")
                 process['hash'] = hash.strip()
 
-        print(self.processList)
+        #print(self.processList)
+        return self.processList

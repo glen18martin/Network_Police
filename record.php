@@ -13,7 +13,9 @@
 
 
       <style>
-
+      #proc td {
+        width: 20px;
+      }
         .block {
           border: 1px solid grey;
           width: 100%;
@@ -38,7 +40,7 @@
         }
 
       </style>
-
+      <script> setTimeout(function() { window.location.reload(true); }, 2000); </script>
   </head>
   <body>
 
@@ -74,16 +76,9 @@
 <div>
 
     <div class="row">
-        <div class="col-xs-6 col-md-4">
-                <div class="btn-group-vertical" role="group" aria-label="...">
-                <button type="button" class="btn btn-default">Left</button>
-                <button type="button" class="btn btn-default">Middle</button>
-                <button type="button" class="btn btn-default">Right</button>
-                </div>
-        </div>
-        <div class="col-xs-6 col-md-4" style="color:white">
-          
-          <?php
+        <div class="col-xs-6 col-md-2">
+           
+           <?php
 
                         $dump = file_get_contents("server/client.dump");
                         $obj = json_decode($dump, true);
@@ -99,9 +94,42 @@
                         
 
         ?>
-        
+
+        </div>
+        <div class="col-xs-6 col-md-8" style="color:white">
+          
+         
 
         <br/><br/><br/><br/><br/><br/>
+
+                        <div class="block">
+                          <span class="blockhead"><img src="img/cpu.png"/>CPU Usage</span>
+                          <span class="blockbody">
+                          <?php 
+                          echo "CPU Usage: " . array_values($obj)[$id]["cu"]["usage"] . " %";
+                          echo "<br/>";
+                          echo "CPU Speed: " . array_values($obj)[$id]["cu"]["freq"] . " Ghz";
+                          
+                          $per0 = array_values($obj)[$id]["cu"]["usage"]; 
+                          $per1 = array_values($obj)[$id]["cu"]["freq"] / 4000; 
+                          ?>
+                          </span>
+
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo array_values($obj)[$id]["cu"]["usage"] ?>"
+                            aria-valuemin="0" aria-valuemax="10000000000" style="width:<?php echo $per0; ?>%">
+                            </div>
+                          </div>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo array_values($obj)[$id]["cu"]["freq"] ?>"
+                            aria-valuemin="0" aria-valuemax="10000000000" style="width:<?php echo $per1; ?>%">
+                            </div>
+                          </div>
+                        </div>
+
+
+<br/><br/><br/>
+
                         <div class="block">
                           <span class="blockhead"><img src="img/hdd.png"/>Disk Usage</span>
                           <span class="blockbody">
@@ -169,8 +197,44 @@
                             </div>
                           </div>
                         </div>
+
+
+                        <br/><br/><br/>
+                        <div class="block">
+                          <span class="blockhead"><img src="img/ram.png"/>Running Processes</span>
+                          <span class="blockbody">
+                            <table id="proc"><tr><td>pid</td><td>path</td><!--<td>hash</td>--></tr>
+                          <?php 
+                          
+                          for($i = 0; $i < count(array_values($obj)[$id]['pr']); $i++) {
+
+                            if(!isset(array_values($obj)[$id]['pr'][$i]['hash'])) continue;
+                            echo "<tr>";
+                             echo "<th>";
+                             echo array_values($obj)[$id]['pr'][$i]['pid'];
+                             echo "</th>";
+
+                             echo "<th>";
+                             echo array_values($obj)[$id]['pr'][$i]['path'];
+                             echo "</th>";
+
+                             //echo "<th>";
+                             // echo array_values($obj)[$id]['pr'][$i]['hash'];
+                             //echo "</th>";
+                            echo "</tr>";
+
+                          }
+                         
+                          ?>
+                          </table>
+                          </span>
+
+                        
+                        </div>
+
+
         </div>
-        <div class="col-xs-6 col-md-4">
+        <div class="col-xs-6 col-md-2">
 
         </div>
 

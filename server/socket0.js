@@ -22,7 +22,9 @@ io.on('connection', function(socket) {
     setInterval(function() {
         socket.emit('get_disk_usage');
         socket.emit('get_memory_usage');
+        
         socket.emit('get_network_usage');
+        socket.emit('get_cpu_usage');
         //console.log(JSON.stringify(clientList));
 
         fs.writeFile("client.dump", JSON.stringify(clientList), function(err) {
@@ -34,12 +36,16 @@ io.on('connection', function(socket) {
         }); 
 
     },2000);
+
+    setInterval(function() { 
+        socket.emit('get_memory_proc');
+    }, 60000);
     
     
     
     socket.on('ident', function(data) {
         console.log("Online " + data);
-        clientList[socket] = { id: data, du: 0, mu: 0, nu: 0 };
+        clientList[socket] = { id: data, du: 0, mu: 0, nu: 0, cu:0, pr:0 };
     });
 
 
@@ -51,6 +57,15 @@ io.on('connection', function(socket) {
     });
     socket.on('network_usage_response', function(data) {
         clientList[socket].nu = data;
+        
+    });
+    socket.on('cpu_usage_response', function(data) {
+        clientList[socket].cu = data;
+        
+    });
+
+    socket.on('memory_proc_response', function(data) {
+        clientList[socket].pr = data;
         
     });
 

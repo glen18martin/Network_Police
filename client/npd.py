@@ -5,6 +5,8 @@ import psutil
 import logging
 from socketIO_client import SocketIO, LoggingNamespace
 
+appmon = AppMon()
+
 file = open("client.cfg", "r") 
 clientid = file.read() 
 
@@ -44,11 +46,21 @@ def send_memory_usage(*args):
     response = {'total': du[0], 'available': du[1], 'used': du[3] }
     socketIO.emit('memory_usage_response', response)
 
+def send_memory_proc(*args):
+    response = appmon.list()
+    socketIO.emit('memory_proc_response', response)
+
+
 def send_network_usage(*args):
     du =   psutil.net_io_counters(pernic=True)['Ethernet']  
     response = {'sent': du[0], 'received': du[1] }
     socketIO.emit('network_usage_response', response)
 
+def send_cpu_usage(*args):
+    cu = psutil.cpu_percent()
+    cf = psutil.cpu_freq()[0]
+    response = {'usage': cu, 'freq': cf}
+    socketIO.emit('cpu_usage_response', response)
 
 
 socketIO = SocketIO('localhost', 1337, LoggingNamespace)
@@ -60,6 +72,8 @@ socketIO.on('reconnect', on_reconnect)
 socketIO.on('get_disk_usage', send_disk_usage)
 socketIO.on('get_memory_usage', send_memory_usage)
 socketIO.on('get_network_usage', send_network_usage)
+socketIO.on('get_cpu_usage', send_cpu_usage)
+socketIO.on('get_memory_proc', send_memory_proc)
 
 #socketIO = SocketIO('localhost', 8000)
 socketIO.wait()
@@ -67,8 +81,7 @@ socketIO.wait()
 
 
 
-#appmon = AppMon()
-#appmon.list()
+
 
 
 
