@@ -76,6 +76,8 @@
 
 
                         <?php
+						
+						
 
                         $dump = file_get_contents("server/client.dump");
                         $obj = json_decode($dump, true);
@@ -86,8 +88,17 @@
                             echo '<img src="img/on.png" class="img-responsive"><a style="color:white;font-weight:bold" href="record.php?id=' .$i. '">'. array_values($obj)[0]["id"] . '</a>';
                             echo '</div>';
                         }
-                        
-
+                        require 'config.php';
+						
+						$result = mysql_query("SELECT * FROM pc_usage");
+						
+						       while($row = mysql_fetch_array($result)){
+								   echo 
+								   
+								   "<div id=".$row['pc_id']." class='gallery_product col-lg-2 col-md-2 col-sm-2 col-xs-4 filter OFF'>
+									<img src='img/off.png' class='img-responsive'><a style='color:white;font-weight:bold' href='record.php?id='".$row['pc_id']."'>".$row['pc_id']."</a>
+								</div>";
+							   }
                         ?>
 
                         <!-- 
