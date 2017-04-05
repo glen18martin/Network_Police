@@ -36,7 +36,7 @@ def send_system_status(*args):
     
 def kill_process(pid):
     print("KILLING pid " + pid) 
-    p = psutil.Process(pid)
+    p = psutil.Process(int(pid))
     p.terminate()
 
 def send_disk_usage(*args):
