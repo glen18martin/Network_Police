@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2017 at 04:55 PM
+-- Generation Time: Apr 05, 2017 at 10:52 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -19,6 +19,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `network_police`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pc_usage`
+--
+
+CREATE TABLE `pc_usage` (
+  `pc_id` varchar(10) NOT NULL,
+  `status` int(5) NOT NULL,
+  `last_boot` int(10) NOT NULL,
+  `on_time` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pc_usage`
+--
+
+INSERT INTO `pc_usage` (`pc_id`, `status`, `last_boot`, `on_time`) VALUES
+('comp10-10', 1, 1491382109, 15),
+('comp10-20', 0, 1491382109, 10),
+('comp10-30', 0, 1491382109, 12),
+('comp10-40', -1, 1486284508, 2),
+('comp10-50', -1, 1486284508, 2),
+('comp10-60', 1, 1491382109, 15);
 
 -- --------------------------------------------------------
 
@@ -42,6 +67,12 @@ INSERT INTO `user` (`user_id`, `username`, `password`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `pc_usage`
+--
+ALTER TABLE `pc_usage`
+  ADD PRIMARY KEY (`pc_id`);
 
 --
 -- Indexes for table `user`
