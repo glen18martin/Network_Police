@@ -34,6 +34,8 @@ def on_reconnect():
 def send_system_status(*args):
     print("Sending Client info...")
     
+def kill_process(pid):
+    print("KILLING pid " + pid) 
 
 def send_disk_usage(*args):
     du = psutil.disk_usage('/')
@@ -74,6 +76,7 @@ socketIO.on('get_memory_usage', send_memory_usage)
 socketIO.on('get_network_usage', send_network_usage)
 socketIO.on('get_cpu_usage', send_cpu_usage)
 socketIO.on('get_memory_proc', send_memory_proc)
+socketIO.on('client_kill_process', kill_process)
 
 #socketIO = SocketIO('localhost', 8000)
 socketIO.wait()

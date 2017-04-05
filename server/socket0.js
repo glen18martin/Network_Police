@@ -5,6 +5,9 @@ var fs = require('fs');
 
 
 var clientList = {}
+//I'm using incremental id's on the js side for socket counting, seding that same value to kill processes here... a problemo!
+//Change some value to null in the clientList array, dont remove any clients in the middle when clients disconnect
+
 
 io.on('connection', function(socket) {
 
@@ -13,6 +16,21 @@ io.on('connection', function(socket) {
 
     socket.on('get_client_data', function(data) {
         socket.emit(clientList);
+    });
+
+    socket.on('kill_process', function(data) {
+        console.log("killing process " + data);
+
+        var i = 0;
+        for (var client in clientList) {
+            if(i++ == data.id) {
+                theSocketWeNeed = clientList[client].s.emit("client_kill_process", data.pid);
+            }
+        }
+
+
+        //clientList[data].
+        socket.disconnect();
     });
 
 
@@ -45,7 +63,7 @@ io.on('connection', function(socket) {
     
     socket.on('ident', function(data) {
         console.log("Online " + data);
-        clientList[socket] = { id: data, du: 0, mu: 0, nu: 0, cu:0, pr:0 };
+        clientList[socket] = { id: data, du: 0, mu: 0, nu: 0, cu:0, pr:0, s: socket};
     });
 
 

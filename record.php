@@ -203,13 +203,19 @@
                         <div class="block">
                           <span class="blockhead"><img src="img/ram.png"/>Running Processes</span>
                           <span class="blockbody">
-                            <table id="proc"><tr><td>pid</td><td>path</td><!--<td>hash</td>--></tr>
+                            <table id="proc"><tr><td>Action</td><td>pid</td><td>path</td><!--<td>hash</td>--></tr>
                           <?php 
                           
                           for($i = 0; $i < count(array_values($obj)[$id]['pr']); $i++) {
 
                             if(!isset(array_values($obj)[$id]['pr'][$i]['hash'])) continue;
                             echo "<tr>";
+
+                             echo "<th>";
+                             echo "<button class='killer' style='background:red; color:white; border: 1px solid white; border-radius:5px' data-pid='" . array_values($obj)[$id]['pr'][$i]['pid'] . "'>Kill</button>";
+                             echo "</th>";
+
+
                              echo "<th>";
                              echo array_values($obj)[$id]['pr'][$i]['pid'];
                              echo "</th>";
@@ -241,9 +247,11 @@
     </div>
 
 </div>
-
+    <script>var pcid = <?php echo $i; ?>;</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/killer.js"></script>
     <script>
         require('./js/renderer.js')
     </script>
