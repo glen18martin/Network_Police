@@ -27,7 +27,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-                <a class="navbar-brand" href="#">Brand</a>
+                <a class="navbar-brand" href="#"><img id="logo" src = "img/logo1.png"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,15 +50,7 @@
 
     <div>
 
-        <div class="row">
-            <div class="col-xs-2 col-md-2">
-                <div class="btn-group-vertical" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default">Left</button>
-                    <button type="button" class="btn btn-default">Middle</button>
-                    <button type="button" class="btn btn-default">Right</button>
-                </div>
-            </div>
-            <div class="col-xs-4 col-md-2">
+        
                 <div class="container">
                     <div class="row">
                         <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -76,6 +68,8 @@
 
 
                         <?php
+						
+						
 
                         $dump = file_get_contents("server/client.dump");
                         $obj = json_decode($dump, true);
@@ -86,8 +80,17 @@
                             echo '<img src="img/on.png" class="img-responsive"><a style="color:white;font-weight:bold" href="record.php?id=' .$i. '">'. array_values($obj)[$i]["id"] . '</a>';
                             echo '</div>';
                         }
-                        
-
+                        require 'config.php';
+						
+						$result = mysql_query("SELECT * FROM pc_usage");
+						
+						       while($row = mysql_fetch_array($result)){
+								   echo 
+								   
+								   "<div id=".$row['pc_id']." class='gallery_product col-lg-2 col-md-2 col-sm-2 col-xs-4 filter OFF'>
+									<img src='img/off.png' class='img-responsive'><a style='color:white;font-weight:bold' href='record.php?id='".$row['pc_id']."'>".$row['pc_id']."</a>
+								</div>";
+							   }
                         ?>
 
                         <!-- 
@@ -138,10 +141,10 @@
                     </div>
                 </div>
 
-            </div>
+           
             </section>
 
-        </div>
+        
 
     </div>
 

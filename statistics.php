@@ -25,14 +25,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#"><img id="logo" src = "img/logo1.png"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="record.php">Record<span class="sr-only">(current)</span></a></li>
-        <li  class="active"><a href="statistics.html">Statistics</a></li>
+        <li  class="active"><a href="statistics.php">Statistics</a></li>
         <li><a href="pc.php">PC</a></li>
         <li><a href="alert.php">Alert</a></li>
         <li><a href="block.php">Block</a></li>
@@ -47,19 +47,8 @@
 <div>
 
     <div class="row">
-        <div class="col-xs-6 col-md-4">
-                <div class="btn-group-vertical" role="group" aria-label="...">
-                <button type="button" class="btn btn-default">Left</button>
-                <button type="button" class="btn btn-default">Middle</button>
-                <button type="button" class="btn btn-default">Right</button>
-                </div>
-        </div>
-        <div class="col-xs-6 col-md-4">
-
-        </div>
-        <div class="col-xs-6 col-md-4">
-
-        </div>
+       
+       
     </div>
 
 </div>
