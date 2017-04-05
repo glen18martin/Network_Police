@@ -9,8 +9,11 @@ class AppMon:
         print("hello")
 
     def list(self):
+        self.processList = []
+
         cmd = 'WMIC PROCESS get Processid,ExecutablePath'
         proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+        
         for line in proc.stdout:
             process = re.split("  +", line.decode("utf-8"))
             if len(process) is 3:
