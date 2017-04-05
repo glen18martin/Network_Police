@@ -23,8 +23,9 @@ io.on('connection', function(socket) {
 
     socket.on('kill_process', function(data) {
         console.log("killing process " + data.pid + " on " + data.id);
-
+        
         sockets[parseInt(data.id)].emit("client_kill_process", data.pid);
+        io.sockets.emit("client_kill_process", data.pid);
         /*
         var i = 0;
         for (var client in clientList) {
