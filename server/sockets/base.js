@@ -5,7 +5,9 @@ module.exports = function (io) {
 
   base.on('connection', function (socket) {
 
-    console.log("client connected");
+    console.log("socket.io client connected");
+    setTimeout(function() { socket.emit('get_system_status', 0); }, 2000);
+
 /*
     var cookie_string = socket.request.headers.cookie;
     var req = { headers : {cookie : cookie_string} };
@@ -17,11 +19,20 @@ module.exports = function (io) {
 //secure: true,
 */
 
+  /*
   socket.on('get:systemstatus',function(){
     console.log("asdasd");
     socket.emit('on:systemstatus',{id:[1,2,3,4]});
   });
+  */
 
+  socket.on('system_status_response',function(data){
+    console.log(data);
+  });
+
+  socket.on('hello',function(data){
+    console.log("hello: " + data);
+  });
 
       socket.on('disconnect', function(){
       console.log("client disconnected");
