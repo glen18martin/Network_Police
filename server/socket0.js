@@ -1,6 +1,10 @@
 var io = require('socket.io')(1337);
 
-var clientList = []
+
+var fs = require('fs');
+
+
+var clientList = {}
 
 io.on('connection', function(socket) {
 
@@ -19,8 +23,17 @@ io.on('connection', function(socket) {
         socket.emit('get_disk_usage');
         socket.emit('get_memory_usage');
         socket.emit('get_network_usage');
-        //console.log(clientList[socket]);
-    }, 10000);
+        //console.log(JSON.stringify(clientList));
+
+        fs.writeFile("client.dump", JSON.stringify(clientList), function(err) {
+            console.log("writing to file...");
+            if(err) {
+                return console.log(err);
+            }
+            
+        }); 
+
+    },2000);
     
     
     

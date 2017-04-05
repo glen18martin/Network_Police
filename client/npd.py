@@ -45,7 +45,7 @@ def send_memory_usage(*args):
     socketIO.emit('memory_usage_response', response)
 
 def send_network_usage(*args):
-    du =   psutil.net_io_counters(pernic=True)  
+    du =   psutil.net_io_counters(pernic=True)['Ethernet']  
     response = {'sent': du[0], 'received': du[1] }
     socketIO.emit('network_usage_response', response)
 

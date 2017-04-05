@@ -75,10 +75,22 @@
 
 
 
-                        <div class="gallery_product col-lg-2 col-md-2 col-sm-2 col-xs-4 filter ON">
-                            <img src="img/on.png" class="img-responsive">
-                        </div>
+                        <?php
 
+                        $dump = file_get_contents("server/client.dump");
+                        $obj = json_decode($dump, true);
+                        //var_dump($obj);
+
+                        for($i = 0; $i < count($obj); $i++) {
+                            echo '<div class="gallery_product col-lg-2 col-md-2 col-sm-2 col-xs-4 filter ON">';
+                            echo '<img src="img/on.png" class="img-responsive"><a style="color:white;font-weight:bold" href="record.php?id=' .$i. '">'. array_values($obj)[0]["id"] . '</a>';
+                            echo '</div>';
+                        }
+                        
+
+                        ?>
+
+                        <!-- 
                         <div class="gallery_product col-lg-2 col-md-2 col-sm-2 col-xs-4 filter OFF">
                             <img src="img/off.png" class="img-responsive">
                         </div>
@@ -122,6 +134,7 @@
                         <div class="gallery_product col-lg-2 col-md-2 col-sm-2 col-xs-4 filter OFF">
                             <img src="img/off.png" class="img-responsive">
                         </div>
+                        -->
                     </div>
                 </div>
 
