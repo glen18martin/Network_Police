@@ -68,7 +68,7 @@ def send_memory_proc(*args):
 
 
 def send_network_usage(*args):
-    du =   psutil.net_io_counters(pernic=True)['Ethernet']  
+    du =   psutil.net_io_counters(pernic=True)['Wi-Fi']  
     response = {'sent': du[0], 'received': du[1] }
     socketIO.emit('network_usage_response', response)
 
