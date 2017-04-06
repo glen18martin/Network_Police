@@ -182,7 +182,7 @@
                         </div>
                         <br/><br/><br/>
                         <div class="block">
-                          <span class="blockhead"><img src="img/net.png"/>  Network Usage</span>
+                          <span class="blockhead"><img src="img/net.png"/>Wi-Fi  Network Usage</span>
                           <span class="blockbody">
                           <?php 
                           echo "Bytes Sent: " . array_values($obj)[$id]["nu"]["sent"] . " Bytes";
@@ -201,6 +201,32 @@
                           </div>
                           <div class="progress">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo array_values($obj)[$id]["nu"]["received"] ?>"
+                            aria-valuemin="0" aria-valuemax="1000000000" style="width:<?php echo $per1; ?>%">
+                            </div>
+                          </div>
+                        </div>
+
+                        <br/><br/><br/>
+                        <div class="block">
+                          <span class="blockhead"><img src="img/net.png"/>Ethernet Network Usage</span>
+                          <span class="blockbody">
+                          <?php 
+                          echo "Bytes Sent: " . array_values($obj)[$id]["enu"]["sent"] . " Bytes";
+                          echo "<br/>";
+                          echo "Bytes received: " . array_values($obj)[$id]["enu"]["received"] . " Bytes";
+                          
+                          $per0 = array_values($obj)[$id]["enu"]["sent"] / 10000000; 
+                          $per1 = array_values($obj)[$id]["enu"]["received"] / 10000000; 
+                          ?>
+                          </span>
+
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo array_values($obj)[$id]["enu"]["sent"] ?>"
+                            aria-valuemin="0" aria-valuemax="1000000000" style="width:<?php echo $per0; ?>%">
+                            </div>
+                          </div>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo array_values($obj)[$id]["enu"]["received"] ?>"
                             aria-valuemin="0" aria-valuemax="1000000000" style="width:<?php echo $per1; ?>%">
                             </div>
                           </div>
