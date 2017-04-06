@@ -41,7 +41,7 @@
         }
 
       </style>
-      <script> setTimeout(function() { window.location.reload(true); }, 5000); </script>
+      
   </head>
   <body>
 
@@ -75,7 +75,12 @@
 
 
 <div>
-
+<div class="pull-right col-md-4">
+<button type="button" class="screenshot btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-screenshot"></span> Screenshot 
+        </button>
+		</div>
+		
     <div class="row">
         <div class="col-xs-6 col-md-2">
            
@@ -258,6 +263,10 @@
     </div>
 
 </div>
+<<<<<<< HEAD
+    <script>var pcid = <?php echo $_GET['id']; ?>;</script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+=======
     <script>
     
     
@@ -274,9 +283,11 @@
     
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+>>>>>>> dda1ffa37c168f522d351d9c40c90d7632bc5db1
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/killer.js"></script>
+	<script src="js/ss.js"></script>
     <script>
         require('./js/renderer.js')
     </script>
