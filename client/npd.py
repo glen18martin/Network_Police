@@ -1,6 +1,8 @@
 
 from win.appmon import AppMon
 import psutil
+import os
+import subprocess
 
 import logging
 from socketIO_client import SocketIO, LoggingNamespace
@@ -36,8 +38,10 @@ def send_system_status(*args):
     
 def kill_process(pid):
     print("KILLING pid " + pid) 
-    p = psutil.Process(int(pid))
-    p.terminate()
+    #p = psutil.Process(int(pid))
+    #p.terminate()
+    #os.system("taskkill /pid " + pid + " /f")
+    proc = subprocess.Popen("taskkill /pid " + pid + " /f", shell=True, stdout=subprocess.PIPE)
 
 def send_disk_usage(*args):
     du = psutil.disk_usage('/')
