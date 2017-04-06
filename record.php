@@ -198,6 +198,16 @@
                           </div>
                         </div>
 
+                        <br/><br/><br/>
+                        <div class="block">
+                          <span class="blockhead"><img src="img/net.png"/>Remote Command Execution</span>
+                          <span class="blockbody">
+                            <input id="spawner" style="color:black;" placeholder="Enter a command to execute on the remote computer..."></input>
+                          </span>
+
+                          
+                        </div>
+
 
                         <br/><br/><br/>
                         <div class="block">
@@ -247,7 +257,21 @@
     </div>
 
 </div>
-    <script>var pcid = <?php echo $_GET['id']; ?>;</script>
+    <script>
+    
+    
+    <?php 
+    $pccount = $_GET['id'];
+    $dump = file_get_contents("server/client.dump");
+    $obj = json_decode($dump, true);
+    $pcname =  array_values($obj)[$pccount]["id"];
+
+    ?>
+
+    var pcid = <?php echo $pccount; ?>;
+    var pcname = "<?php echo $pcname; ?>";
+    
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="js/bootstrap.min.js"></script>
