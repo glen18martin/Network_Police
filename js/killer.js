@@ -23,6 +23,17 @@ $(document).ready(function() {
 
     });
   
+    $("#messagesender").on("keydown", function(event) { 
+        
+        if(event.which == 13) {
+            var msg = $(this).val();
+            $(this).val("");
+            var socket = io("http://localhost:1337");
+            socket.emit('show_alert_to_user', {id: pcid, message: msg, pcusername: pcname});
+        }
+        
+
+    });
   
     
  });

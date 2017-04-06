@@ -242,6 +242,15 @@
                           
                         </div>
 
+                        <br/><br/><br/>
+                        <div class="block">
+                          <span class="blockhead"><img src="img/net.png"/>  Send Alert/Message</span>
+                          <span class="blockbody" style="width:100%">
+                            <input style="color:black;width:100%" id="messagesender" placeholder="Enter a message to send to the remote computer..." ></input>
+                          </span>
+
+                          
+                        </div>
 
                         <br/><br/><br/>
                         <div class="block">

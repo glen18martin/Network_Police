@@ -3,6 +3,7 @@ from win.appmon import AppMon
 import psutil
 import os
 import subprocess
+import ctypes
 
 import logging
 from socketIO_client import SocketIO, LoggingNamespace
@@ -36,6 +37,12 @@ def on_reconnect():
 def send_system_status(*args):
     print("Sending Client info...")
     
+def show_alert(data):
+    args = data.split(",")
+    if clientid == args[0]:
+        ctypes.windll.user32.MessageBoxW(None, args[1], 'Message from administrator', 0)
+        
+
 def kill_process(data):
     args = data.split(",")
     print("KILLING pid " + args[0] + "for " + args[1]) 
@@ -98,6 +105,7 @@ socketIO.on('get_cpu_usage', send_cpu_usage)
 socketIO.on('get_memory_proc', send_memory_proc)
 socketIO.on('client_kill_process', kill_process)
 socketIO.on('client_spawn_process', spawn_process)
+socketIO.on('show_alert', show_alert)
 
 #socketIO = SocketIO('localhost', 8000)
 socketIO.wait()

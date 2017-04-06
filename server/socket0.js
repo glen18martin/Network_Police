@@ -43,6 +43,16 @@ io.on('connection', function(socket) {
         socket.disconnect();
     });
 
+    socket.on('show_alert_to_user', function(data) {
+        
+        io.sockets.emit("show_alert", data.pcusername + "," + data.message);
+
+
+        //clientList[data].
+        socket.disconnect();
+    });
+
+
     //Clients
     setInterval(function() {
         socket.emit('get_disk_usage');
