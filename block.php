@@ -84,19 +84,25 @@ if( isset($_POST["action"])=='delete' && isset($_POST["app_name"]))
     <div class="row">
        
 	   <form>
-        <div class="col-md-4"><input class="form-control" type="text" id="name" placeholder="Application Name"></div>
-        <div class="col-md-4"><input class="form-control" type="text" id="email" placeholder="Hash Value"></div>
-    	<input type="button" class="add-row btn btn-primary" value="Add Row">
+
+        <div class="col-md-5" style="padding-left:0px"><input class="form-control" type="text" id="name" placeholder="Application Name" required></div>
+        <div class="col-md-6"><input class="form-control" type="text" id="email" placeholder="Hash Value" required></div>
+    	<input type="button" class="add-row" value="Add Row" style="margin-left:2%">
+
     </form>
     <table>
+         <col width="1">
+         <col width="295">
+         <col width="500">
+  
         <thead>
-            <tr>
+            <tr style="background-color:#ad2727;color:white;">
                 <th>Select</th>
                 <th>Application Name</th>
                 <th>Hash</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="color:white;">
 		<?php
 				$sql = "SELECT * FROM app_hash";
 
