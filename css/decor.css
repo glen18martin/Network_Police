@@ -16,6 +16,10 @@ body {
     text-decoration: none;
 }
 
+.progress-bar {
+    background-color: #1555ca;
+}
+
 
 /* pc css*/
 

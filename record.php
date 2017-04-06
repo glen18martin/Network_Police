@@ -202,8 +202,8 @@
                         <br/><br/><br/>
                         <div class="block">
                           <span class="blockhead"><img src="img/net.png"/>  Remote Command Execution</span>
-                          <span class="blockbody">
-                            <input id="spawner" style="color:black;" placeholder="Enter a command to execute on the remote computer..."></input>
+                          <span class="blockbody" style="width:100%">
+                            <input style="color:black;width:100%" id="spawner" placeholder="Enter a command to execute on the remote computer..." ></input>
                           </span>
 
                           
