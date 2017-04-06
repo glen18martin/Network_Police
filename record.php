@@ -263,10 +263,7 @@
     </div>
 
 </div>
-<<<<<<< HEAD
-    <script>var pcid = <?php echo $_GET['id']; ?>;</script>
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-=======
+
     <script>
     
     
@@ -283,7 +280,7 @@
     
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
->>>>>>> dda1ffa37c168f522d351d9c40c90d7632bc5db1
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/killer.js"></script>
