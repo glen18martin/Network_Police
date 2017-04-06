@@ -1,3 +1,38 @@
+
+<?php
+require('config.php');
+
+if( isset($_POST["app_name"]) && isset($_POST["hash"]))
+{
+	
+	$app_name = $_POST["app_name"];
+	$hash = $_POST["hash"];
+	$result = mysql_query("INSERT INTO app_hash (application, hash, timestamp)
+	VALUES ('$app_name', '$hash', date('Y/m/d'))");
+	
+	if($result){
+		    echo "Records inserted successfully.";		
+	}
+	exit();
+}
+
+
+if( isset($_POST["action"])=='delete' && isset($_POST["app_name"]))
+{
+	
+	
+	$app_name = $_POST["app_name"];
+	$result = mysql_query("DELETE FROM app_hash WHERE application = '$app_name'");
+	
+	if($result){
+	echo $app_name;	    
+	}
+	
+	exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,16 +79,50 @@
 </nav>
 
 
-<div>
+<div class="container">
 
     <div class="row">
        
+	   <form>
+        <div class="col-md-4"><input class="form-control" type="text" id="name" placeholder="Application Name"></div>
+        <div class="col-md-4"><input class="form-control" type="text" id="email" placeholder="Hash Value"></div>
+    	<input type="button" class="add-row" value="Add Row">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Application Name</th>
+                <th>Hash</th>
+            </tr>
+        </thead>
+        <tbody>
+		<?php
+				$sql = "SELECT * FROM app_hash";
+
+			if($result = mysql_query($sql)){
+
+			while($row = mysql_fetch_array($result)){
+				echo "<tr>";
+                echo "<td><input data-id='".$row['application']."' type='checkbox' name='record'></td>";
+                echo "<td>".$row['application']."</td>";
+                echo "<td>".$row['hash']."</td>";
+				echo "</tr>";
+			}
+			}
+		?>
+            
+        </tbody>
+    </table>
+    <button type="button" class="delete-row">Delete Row</button>
+	
     </div>
 
 </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+	<script src="js/block.js"></script>
     <script>
         require('./js/renderer.js')
     </script>
