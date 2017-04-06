@@ -62,7 +62,7 @@
                                       </div>
                                       <div class="wow fadeInUp" >
                                             <p>Phasellus vulputate tellus nec tortor varius elementum. Curabitur at pulvinar ante. Duis dui urna, faucibus eget felis eu, iaculis congue sem. Mauris convallis eros massa.</p>
-                                            <p>Quisque viverra iaculis aliquam. Etiam volutpat, justo non aliquam bibendum, sem nibh mollis erat, quis porta odio odio at velit.</p>
+                                            
                                       </div>
                                   </div>
                             </div>
@@ -76,7 +76,7 @@
                             <div class="bg-yellow col-md-3 col-sm-6">
                                   <div class="skill-thumb">
                                       <div class="wow fadeInUp section-title color-white" >
-                                            <h2>Machine's Status</h2>
+                                            <h2><center>Machine</center></h2>
                                            
                                       </div>
 

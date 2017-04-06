@@ -23,11 +23,12 @@
           font-family: 'Courier New'; 
         }
         .blockhead {
-          background: grey;
+          background: #ad2727;
           padding: 5px;
           width: 100%;
           display: block;
-          color: black;
+         
+         font-size:150%;
           
           margin-bottom: 10px;
           
@@ -103,7 +104,7 @@
         <br/><br/><br/><br/><br/><br/>
 
                         <div class="block">
-                          <span class="blockhead"><img src="img/cpu.png"/>CPU Usage</span>
+                          <span class="blockhead"><img src="img/cpu.png"/>  CPU Usage</span>
                           <span class="blockbody">
                           <?php 
                           echo "CPU Usage: " . array_values($obj)[$id]["cu"]["usage"] . " %";
@@ -131,7 +132,7 @@
 <br/><br/><br/>
 
                         <div class="block">
-                          <span class="blockhead"><img src="img/hdd.png"/>Disk Usage</span>
+                          <span class="blockhead"><img src="img/hdd.png"/>  Disk Usage</span>
                           <span class="blockbody">
                           <?php 
                           echo "Total: " . array_values($obj)[$id]["du"]["total"] . " Bytes";
@@ -152,7 +153,7 @@
                         </div>
                         <br/><br/><br/>
                         <div class="block">
-                          <span class="blockhead"><img src="img/ram.png"/>Memory Usage</span>
+                          <span class="blockhead"><img src="img/ram.png"/>  Memory Usage</span>
                           <span class="blockbody">
                           <?php 
                           echo "Total: " . array_values($obj)[$id]["mu"]["total"] . " Bytes";
@@ -174,7 +175,7 @@
                         </div>
                         <br/><br/><br/>
                         <div class="block">
-                          <span class="blockhead"><img src="img/net.png"/>Network Usage</span>
+                          <span class="blockhead"><img src="img/net.png"/>  Network Usage</span>
                           <span class="blockbody">
                           <?php 
                           echo "Bytes Sent: " . array_values($obj)[$id]["nu"]["sent"] . " Bytes";
@@ -200,7 +201,7 @@
 
                         <br/><br/><br/>
                         <div class="block">
-                          <span class="blockhead"><img src="img/net.png"/>Remote Command Execution</span>
+                          <span class="blockhead"><img src="img/net.png"/>  Remote Command Execution</span>
                           <span class="blockbody">
                             <input id="spawner" style="color:black;" placeholder="Enter a command to execute on the remote computer..."></input>
                           </span>
@@ -211,7 +212,7 @@
 
                         <br/><br/><br/>
                         <div class="block">
-                          <span class="blockhead"><img src="img/ram.png"/>Running Processes</span>
+                          <span class="blockhead"><img src="img/ram.png"/>  Running Processes</span>
                           <span class="blockbody">
                             <table id="proc"><tr><td>Action</td><td>pid</td><td>path</td><!--<td>hash</td>--></tr>
                           <?php 

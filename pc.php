@@ -35,7 +35,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="record.php">Record<span class="sr-only">(current)</span></a></li>
                     <li><a href="statistics.php">Statistics</a></li>
-                    <li class="active"><a href="pc.html">PC</a></li>
+                    <li class="active"><a href="pc.php">PC</a></li>
                     <li><a href="alert.php">Alert</a></li>
                     <li><a href="block.php">Block</a></li>
                 </ul>
