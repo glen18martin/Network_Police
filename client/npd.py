@@ -8,6 +8,9 @@ import ctypes
 import logging
 from socketIO_client import SocketIO, LoggingNamespace
 
+proc = subprocess.Popen("py -m http.server 8000", shell=True, stdout=subprocess.PIPE)
+
+
 appmon = AppMon()
 
 file = open("client.cfg", "r") 

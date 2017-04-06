@@ -13,7 +13,8 @@ var sockets = [];
 var counter = 0;
 
 io.on('connection', function(socket) {
-
+    var clientIp = socket.request.connection.remoteAddress;
+    console.log("Connection from " + clientIp);
     sockets[counter++] = socket;
     //For the Panel
 
