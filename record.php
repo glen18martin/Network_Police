@@ -11,7 +11,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
      <link rel="stylesheet" type="text/css" href="css/decor.css">
 
-
+     
       <style>
       #proc td {
         width: 20px;
@@ -42,6 +42,8 @@
 
       </style>
       
+     <script> setTimeout(function() { window.location.reload(true); }, 5000); </script>
+
   </head>
   <body>
 
@@ -187,19 +189,19 @@
                           echo "<br/>";
                           echo "Bytes received: " . array_values($obj)[$id]["nu"]["received"] . " Bytes";
                           
-                          $per0 = array_values($obj)[$id]["nu"]["sent"] / 10000000000; 
-                          $per1 = array_values($obj)[$id]["nu"]["received"] / 10000000000; 
+                          $per0 = array_values($obj)[$id]["nu"]["sent"] / 10000000; 
+                          $per1 = array_values($obj)[$id]["nu"]["received"] / 10000000; 
                           ?>
                           </span>
 
                           <div class="progress">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo array_values($obj)[$id]["nu"]["sent"] ?>"
-                            aria-valuemin="0" aria-valuemax="10000000000" style="width:<?php echo $per0; ?>%">
+                            aria-valuemin="0" aria-valuemax="1000000000" style="width:<?php echo $per0; ?>%">
                             </div>
                           </div>
                           <div class="progress">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo array_values($obj)[$id]["nu"]["received"] ?>"
-                            aria-valuemin="0" aria-valuemax="10000000000" style="width:<?php echo $per1; ?>%">
+                            aria-valuemin="0" aria-valuemax="1000000000" style="width:<?php echo $per1; ?>%">
                             </div>
                           </div>
                         </div>
@@ -207,8 +209,8 @@
                         <br/><br/><br/>
                         <div class="block">
                           <span class="blockhead"><img src="img/net.png"/>  Remote Command Execution</span>
-                          <span class="blockbody">
-                            <input id="spawner" style="color:black;" placeholder="Enter a command to execute on the remote computer..."></input>
+                          <span class="blockbody" style="width:100%">
+                            <input style="color:black;width:100%" id="spawner" placeholder="Enter a command to execute on the remote computer..." ></input>
                           </span>
 
                           
@@ -263,10 +265,7 @@
     </div>
 
 </div>
-<<<<<<< HEAD
-    <script>var pcid = <?php echo $_GET['id']; ?>;</script>
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-=======
+
     <script>
     
     
@@ -283,7 +282,7 @@
     
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
->>>>>>> dda1ffa37c168f522d351d9c40c90d7632bc5db1
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/killer.js"></script>
