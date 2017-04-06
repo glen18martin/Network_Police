@@ -1,6 +1,8 @@
 
 from win.appmon import AppMon
 import psutil
+import os
+import subprocess
 
 import logging
 from socketIO_client import SocketIO, LoggingNamespace
@@ -34,10 +36,20 @@ def on_reconnect():
 def send_system_status(*args):
     print("Sending Client info...")
     
-def kill_process(pid):
-    print("KILLING pid " + pid) 
-    p = psutil.Process(int(pid))
-    p.terminate()
+def kill_process(data):
+    args = data.split(",")
+    print("KILLING pid " + args[0] + "for " + args[1]) 
+    #p = psutil.Process(int(pid))
+    #p.terminate()
+    #os.system("taskkill /pid " + pid + " /f")
+    if clientid == args[1]:
+        proc = subprocess.Popen("taskkill /pid " + args[0] + " /f", shell=True, stdout=subprocess.PIPE)
+        
+def spawn_process(process):
+    args = process.split(",")
+    print("Spawning process " + args[0] + " for " + args[1]) 
+    if clientid == args[1]:
+        proc = subprocess.Popen(args[0], shell=True, stdout=subprocess.PIPE)
 
 def send_disk_usage(*args):
     du = psutil.disk_usage('/')
@@ -79,6 +91,7 @@ socketIO.on('get_network_usage', send_network_usage)
 socketIO.on('get_cpu_usage', send_cpu_usage)
 socketIO.on('get_memory_proc', send_memory_proc)
 socketIO.on('client_kill_process', kill_process)
+socketIO.on('client_spawn_process', spawn_process)
 
 #socketIO = SocketIO('localhost', 8000)
 socketIO.wait()
