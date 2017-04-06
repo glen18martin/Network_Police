@@ -189,19 +189,19 @@
                           echo "<br/>";
                           echo "Bytes received: " . array_values($obj)[$id]["nu"]["received"] . " Bytes";
                           
-                          $per0 = array_values($obj)[$id]["nu"]["sent"] / 10000000000; 
-                          $per1 = array_values($obj)[$id]["nu"]["received"] / 10000000000; 
+                          $per0 = array_values($obj)[$id]["nu"]["sent"] / 10000000; 
+                          $per1 = array_values($obj)[$id]["nu"]["received"] / 10000000; 
                           ?>
                           </span>
 
                           <div class="progress">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo array_values($obj)[$id]["nu"]["sent"] ?>"
-                            aria-valuemin="0" aria-valuemax="10000000000" style="width:<?php echo $per0; ?>%">
+                            aria-valuemin="0" aria-valuemax="1000000000" style="width:<?php echo $per0; ?>%">
                             </div>
                           </div>
                           <div class="progress">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo array_values($obj)[$id]["nu"]["received"] ?>"
-                            aria-valuemin="0" aria-valuemax="10000000000" style="width:<?php echo $per1; ?>%">
+                            aria-valuemin="0" aria-valuemax="1000000000" style="width:<?php echo $per1; ?>%">
                             </div>
                           </div>
                         </div>
