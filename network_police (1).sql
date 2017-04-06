@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2017 at 10:52 AM
+-- Generation Time: Apr 05, 2017 at 07:16 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -19,6 +19,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `network_police`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `app_hash`
+--
+
+CREATE TABLE `app_hash` (
+  `id` int(5) NOT NULL,
+  `application` varchar(50) NOT NULL,
+  `hash` varchar(100) NOT NULL,
+  `timestamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -69,6 +82,12 @@ INSERT INTO `user` (`user_id`, `username`, `password`) VALUES
 --
 
 --
+-- Indexes for table `app_hash`
+--
+ALTER TABLE `app_hash`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pc_usage`
 --
 ALTER TABLE `pc_usage`
@@ -80,6 +99,15 @@ ALTER TABLE `pc_usage`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `app_hash`
+--
+ALTER TABLE `app_hash`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

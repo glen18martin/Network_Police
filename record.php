@@ -40,7 +40,7 @@
         }
 
       </style>
-      <script> setTimeout(function() { window.location.reload(true); }, 2000); </script>
+      <script> setTimeout(function() { window.location.reload(true); }, 5000); </script>
   </head>
   <body>
 

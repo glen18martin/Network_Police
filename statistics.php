@@ -10,12 +10,13 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
      <link rel="stylesheet" type="text/css" href="css/decor.css">
+     <link rel="stylesheet" href="css/templatemo-style.css">
 
 
   </head>
   <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="margin-bottom:0px">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -46,8 +47,108 @@
 
 <div>
 
-    <div class="row">
-       
+    <div class="row" >
+      
+        
+              <section id="about" class="parallax-section" >
+                  <div class="container">
+                        <div class="row">
+
+                            <div class="col-md-6 col-sm-12">
+                                  <div class="about-thumb">
+                                      <div class="wow fadeInUp section-title" >
+                                            <h1>Network Police</h1>
+                                            <p class="color-yellow">Sed vulputate vitae diam quis bibendum</p>
+                                      </div>
+                                      <div class="wow fadeInUp" >
+                                            <p>Phasellus vulputate tellus nec tortor varius elementum. Curabitur at pulvinar ante. Duis dui urna, faucibus eget felis eu, iaculis congue sem. Mauris convallis eros massa.</p>
+                                            <p>Quisque viverra iaculis aliquam. Etiam volutpat, justo non aliquam bibendum, sem nibh mollis erat, quis porta odio odio at velit.</p>
+                                      </div>
+                                  </div>
+                            </div>
+
+                            
+                            <div class="bg-red col-md-3 col-sm-6">
+                                                                   
+                                                                 
+                            </div>
+
+                            <div class="bg-yellow col-md-3 col-sm-6">
+                                  <div class="skill-thumb">
+                                      <div class="wow fadeInUp section-title color-white" >
+                                            <h2>Machine's Status</h2>
+                                           
+                                      </div>
+
+                                      <div class=" wow fadeInUp skills-thumb">
+                                      <strong>ON</strong>
+                                            <span class="color-white pull-right">90%</span>
+                                                <div class="progress">
+                                                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                                                </div>
+
+                                      <strong>OFF</strong>
+                                            <span class="color-white pull-right">70%</span>
+                                                <div class="progress">
+                                                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                                                </div>
+
+                                      <strong>OUT OF SERVICE</strong>
+                                            <span class="color-white pull-right">80%</span>
+                                                <div class="progress">
+                                                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                                                </div>
+                                      </div>
+
+                                  </div>
+                            </div>
+
+                        </div>
+                  </div>
+              </section>
+
+
+                            
+              <section id="service" class="parallax-section">
+                  <div class="container">
+                        <div class="row">
+
+                            <div class="bg-yellow col-md-3 col-sm-6">
+                                  <div class="wow fadeInUp color-white service-thumb">
+                                      <i class="fa fa-desktop"></i>
+                                            <h3>Interface Design</h3>
+                                            <p class="color-white">Phasellus vulputate tellus nec tortor varius elementum. Curabitur at pulvinar ante.</p>
+                                  </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6">
+                                  <div class="wow fadeInUp color-white service-thumb" >
+                                      <i class="fa fa-paper-plane"></i>
+                                            <h3>Media Strategy</h3>
+                                            <p class="color-white">Curabitur at pulvinar ante. Duis dui urna, faucibus eget felis eu, iaculis congue sem.</p>
+                                  </div>
+                            </div>
+
+                            <div class="bg-dark col-md-3 col-sm-6">
+                                  <div class="wow fadeInUp color-white service-thumb">
+                                      <i class="fa fa-table"></i>
+                                            <h3>Mobile App</h3>
+                                            <p class="color-white">Mauris convallis eros massa, vitae euismod arcu tempus ut. Quisque viverra iaculis.</p>
+                                  </div>
+                            </div>
+
+                            <div class="bg-white col-md-3 col-sm-6">
+                                  <div class="wow fadeInUp service-thumb" >
+                                      <i class="fa fa-html5"></i>
+                                            <h3>Coding</h3>
+                                            <p>Mauris convallis eros massa, vitae euismod arcu tempus ut. Quisque viverra iaculis.</p>
+                                  </div>
+                            </div>
+
+                        </div>
+                  </div>
+              </section>
+
        
     </div>
 
