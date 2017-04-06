@@ -42,6 +42,8 @@
 
       </style>
       
+     <script> setTimeout(function() { window.location.reload(true); }, 5000); </script>
+
   </head>
   <body>
 
