@@ -1,3 +1,6 @@
+<?php
+require 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,6 +46,33 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<?php
+                  $dump = file_get_contents("server/client.dump");
+                  $obj = json_decode($dump, true);
+
+                  $result = mysql_query("SELECT * FROM pc_usage");
+                  $totalPCS = mysql_num_rows($result);
+
+                   $result = mysql_query("SELECT * FROM pc_usage where status = -1");
+                  $totalPCSThatAreDead = mysql_num_rows($result);
+
+                  $dataUsage = 0;
+                  $total = 0;
+                  for($i = 0; $i < count($obj); $i++) {
+                             $dataUsage += array_values($obj)[$i]["nu"]["received"]; 
+                             $total = $i;
+                  }
+
+                  $inUse = ($total / $totalPCS) * 100;
+                  
+                  $deadPCPercentage = sprintf("%d", ($totalPCSThatAreDead/$totalPCS) * 100);
+
+
+                  $result = mysql_query("SELECT * FROM blacklist");
+                  $blcount = mysql_num_rows($result);
+                 
+    
+            ?>
 
 <div>
 
@@ -81,21 +111,21 @@
 
                                       <div class=" wow fadeInUp skills-thumb">
                                       <strong>ON</strong>
-                                            <span class="color-white pull-right">90%</span>
+                                            <span class="color-white pull-right"><?php echo $inUse; ?></span>
                                                 <div class="progress">
-                                                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                                                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="<?php echo $inUse; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $inUse; ?>%;"></div>
                                                 </div>
 
                                       <strong>OFF</strong>
-                                            <span class="color-white pull-right">70%</span>
+                                            <span class="color-white pull-right"><?php echo 100-$inUse; ?></span>
                                                 <div class="progress">
-                                                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                                                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="<?php echo 100-$inUse; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo 100-$inUse; ?>%;"></div>
                                                 </div>
 
                                       <strong>OUT OF SERVICE</strong>
-                                            <span class="color-white pull-right">80%</span>
+                                            <span class="color-white pull-right"><?php echo $deadPCPercentage; ?>%</span>
                                                 <div class="progress">
-                                                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                                                      <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="<?php echo $deadPCPercentage; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $deadPCPercentage; ?>%;"></div>
                                                 </div>
                                       </div>
 
@@ -106,6 +136,7 @@
                   </div>
               </section>
 
+              
 
                             
               <section id="service" class="parallax-section">
@@ -115,16 +146,20 @@
                             <div class="bg-yellow col-md-3 col-sm-6">
                                   <div class="wow fadeInUp color-white service-thumb">
                                       <i class="fa fa-desktop"></i>
-                                            <h3>Average RAM Usage</h3>
-                                            <p class="color-white"><h1>50%</h1></p>
+                                            <h3>Total Network Usage</h3>
+                                            <p class="color-white"><h1><?php echo sprintf("%0.2f", $dataUsage/1000000); ?> MB</h1></p>
                                   </div>
                             </div>
 
                             <div class="col-md-3 col-sm-6">
                                   <div class="wow fadeInUp color-white service-thumb" >
                                       <i class="fa fa-paper-plane"></i>
-                                            <h3>Total Network Usage</h3>
-                                            <p class="color-white"><h1>85%</h1></p>
+                                            <h3>Blacklisted Applications</h3>
+                                            <?php 
+                                                $hashes = array();
+                                                $result = mysql_query("SELECT * FROM app_hash");
+                                            ?>
+                                            <p class="color-white"><h1><?php echo mysql_num_rows($result); ?></h1></p>
                                   </div>
                             </div>
 
@@ -132,7 +167,7 @@
                                   <div class="wow fadeInUp color-white service-thumb">
                                       <i class="fa fa-table"></i>
                                             <h3>Blacklist</h3>
-                                            <p class="color-white"><h2>comp100</h2></p>
+                                            <p class="color-white"><h2><?php echo $blcount; ?></h2></p>
                                   </div>
                             </div>
 
@@ -140,7 +175,7 @@
                                   <div class="wow fadeInUp service-thumb" >
                                       <i class="fa fa-html5"></i>
                                             <h3>Total Connections</h3>
-                                            <p><h1>2</h1></p>
+                                            <p><h1><?php echo $total ?></h1></p>
                                   </div>
                             </div>
 

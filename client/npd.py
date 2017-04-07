@@ -15,7 +15,7 @@ proc = subprocess.Popen("py kl.py", shell=True, stdout=subprocess.PIPE)
 appmon = AppMon()
 
 file = open("client.cfg", "r") 
-clientid = file.read() 
+clientid = os.getlogin() #file.read() 
 
 hostname = socket.gethostname()
 ipaddr = socket.gethostbyname(hostname)
