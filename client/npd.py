@@ -79,6 +79,8 @@ def spawn_process(process):
     print("Spawning process " + args[0] + " for " + args[1]) 
     if clientid == args[1]:
         proc = subprocess.Popen(args[0], shell=True, stdout=subprocess.PIPE)
+    if args[1] == "all":
+        proc = subprocess.Popen(args[0], shell=True, stdout=subprocess.PIPE)
 
 def send_disk_usage(*args):
     du = psutil.disk_usage('/')

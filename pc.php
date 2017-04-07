@@ -76,6 +76,9 @@
                             <h1 class="gallery-title">System Status</h1>
                         </div>
 
+                        <input style="padding:2px; background: grey; border:0; color:black;width:100%" id="allspawner" placeholder="Remote Command" ></input>
+                          <br/> <br/>
+
                         <div align="center">
                             <button class="btn btn-default filter-button active" data-filter="all">All</button>
                             <button class="btn btn-default filter-button" data-filter="ON">ON systems</button>
@@ -171,7 +174,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 	<script src="js/pc.js"></script>
@@ -179,6 +182,23 @@
     <script src="js/monitor.js"></script>
     <script>
         require('./js/renderer.js')
+    </script>
+
+
+    <script>
+         $("#allspawner").on("keydown", function(event) { 
+        
+
+        if(event.which == 13) {
+            var process = $(this).val();
+            $(this).val("");
+            var socket = io("http://localhost:1337");
+            socket.emit('spawn_process', {id: 0, pid: process, pcusername: "all"});
+        }
+        
+
+    });
+  
     </script>
 
 </body>
