@@ -9,7 +9,11 @@ $(document).ready(function() {
                 console.log(data);
                 for(var i = 0; i < data.length; i++) {
                     console.log(data[i]);
-                    alert("Illegal application execution @ " + data[i].id + ": " + data[i].exe);
+                    //alert("Illegal application execution @ " + data[i].id + ": " + data[i].exe);
+                    $("#alerter").html("<img src='img/alert.png'/>Illegal application execution @ " + data[i].id + ": " + data[i].exe);
+                    $("#alerter").slideUp();
+                    document.getElementById('aud').play();
+                    setTimeout(function() { $("#alerter").slideDown();}, 6000);   
                 }
             }
                             
