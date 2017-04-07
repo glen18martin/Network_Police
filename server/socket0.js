@@ -18,6 +18,10 @@ io.on('connection', function(socket) {
     sockets[counter++] = socket;
     //For the Panel
 
+    socket.on('disconnect', function(data) {
+        clientList[socket.id] = null;
+    });
+
     socket.on('get_client_data', function(data) {
         socket.emit(clientList);
     });
