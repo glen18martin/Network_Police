@@ -79,7 +79,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="record.php">Record<span class="sr-only">(current)</span></a></li>
         <li><a href="statistics.php">Statistics</a></li>
         <li><a href="pc.php">PC</a></li>
         <li><a href="alert.php">Alert</a></li>

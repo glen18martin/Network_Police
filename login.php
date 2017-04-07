@@ -29,7 +29,7 @@ if(mysql_num_rows($result) == 0) {
 } else {
    echo "Found user Successfully";
   
-header("Location:http://localhost:81/Network_Police/main.php");
+header("Location:http://localhost/Network_Police/statistics.php");
 
 
 
