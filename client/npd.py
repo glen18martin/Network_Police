@@ -115,7 +115,7 @@ def send_cpu_usage(*args):
     socketIO.emit('cpu_usage_response', response)
 
 
-socketIO = SocketIO('localhost', 1337, LoggingNamespace)
+socketIO = SocketIO('192.168.43.127', 1337, LoggingNamespace)
 socketIO.on('connect', on_connect)
 socketIO.on('disconnect', on_disconnect)
 socketIO.on('reconnect', on_reconnect)
