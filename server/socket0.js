@@ -13,7 +13,8 @@ var sockets = [];
 var counter = 0;
 
 io.on('connection', function(socket) {
-
+    //var clientIp = socket.request.connection.remoteAddress;
+    //console.log("Connection from " + clientIp);
     sockets[counter++] = socket;
     //For the Panel
 
@@ -43,11 +44,34 @@ io.on('connection', function(socket) {
         socket.disconnect();
     });
 
+    socket.on('show_alert_to_user', function(data) {
+        
+        io.sockets.emit("show_alert", data.pcusername + "," + data.message);
+
+
+        //clientList[data].
+        socket.disconnect();
+    });
+
+    socket.on('take_screenshot', function(data) {
+        
+        io.sockets.emit("client_take_screenshot", data.pcusername);
+        //clientList[data].
+        socket.disconnect();
+    });
+
+    socket.on('monitor_off', function(data) {
+        
+        io.sockets.emit("client_monitor_off", data.pcusername);
+        //clientList[data].
+        socket.disconnect();
+    });
+
     //Clients
     setInterval(function() {
         socket.emit('get_disk_usage');
         socket.emit('get_memory_usage');
-        
+        socket.emit('get_enetwork_usage');
         socket.emit('get_network_usage');
         socket.emit('get_cpu_usage');
         //console.log(JSON.stringify(clientList));
@@ -75,8 +99,8 @@ io.on('connection', function(socket) {
     
     
     socket.on('ident', function(data) {
-        console.log("Online " + data);
-        clientList[socket] = { id: data, du: 0, mu: 0, nu: 0, cu:0, pr:0};
+        console.log("Online " + data.ident + " from " + data.ip);
+        clientList[socket] = { id: data.ident, ip: data.ip, du: 0, mu: 0, nu: 0, cu:0, pr:0, enu: 0};
     });
 
     
@@ -90,6 +114,10 @@ io.on('connection', function(socket) {
     });
     socket.on('network_usage_response', function(data) {
         clientList[socket].nu = data;
+        
+    });
+    socket.on('enetwork_usage_response', function(data) {
+        clientList[socket].enu = data;
         
     });
     socket.on('cpu_usage_response', function(data) {

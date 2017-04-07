@@ -13,8 +13,7 @@ for($id = 0; $id < count($obj); $id++) {
         $path =  array_values($obj)[$id]['pr'][$i]['path'];
         $hash = array_values($obj)[$id]['pr'][$i]['hash'];
         $idx =  array_values($obj)[$id]["id"];
-
-        if($hash == '70b2f403924958b8bd9bcace8e097a59') {
+        if(strpos($path, "vlc.exe") > 0) {  //if($hash == '70b2f403924958b8bd9bcace8e097a59') {
             $offenders[] = array("id" => $idx, "exe" => $path, "pid" => $pid); 
         }
     }

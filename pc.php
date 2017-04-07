@@ -12,11 +12,30 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/decor.css">
 
+    <style>
+#alerter {
+    display: none;
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    height: 50px;
+    padding: 5px;
+    font-weight: bold;
+    background: black;
+    left:0;
+    color:red;
+
+}
+#alerter img {
+          max-width: 32px;
+        }
+        </style>
 
 </head>
 
 <body>
-
+<audio src="img/err.mp3" id="aud"></audio>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -65,7 +84,9 @@
                         </div>
                         <br/>
 
-
+                        <div id="alerter">
+                        ALERT!!!
+                        </div>
 
                         <?php
 						

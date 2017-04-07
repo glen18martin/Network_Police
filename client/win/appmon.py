@@ -20,8 +20,10 @@ class AppMon:
                 self.processList.append({'pid':process[1], 'path':process[0]})
 
 
-
+        lastpath = ""
         for process in self.processList:
+            if process['path'] == lastpath:
+                continue
 
             if len(process['path']) > 0:
                 print("Hashing " + process['path'])
@@ -32,6 +34,8 @@ class AppMon:
                 for line in proc.stdout:
                     hash = line.decode("UTF-8").replace(" ", "")
                 process['hash'] = hash.strip()
+
+                lastpath = process['path']
 
         #print(self.processList)
         return self.processList
