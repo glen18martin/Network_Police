@@ -14,7 +14,7 @@
 
 
   </head>
-  <body>
+  <body style="background-color:#333">
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -45,8 +45,8 @@
 
 <div class="container">
     <div class="row">
-        <h2>
-            Alerts</h2>
+        <h2 style="color:white">
+            Alerts</h2> <br>
         <div class="col-md-12">
 		<?php 
 		
