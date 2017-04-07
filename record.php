@@ -334,8 +334,8 @@
     
     <?php 
     $pccount = $_GET['id'];
-    $dump = file_get_contents("server/client.dump");
-    $obj = json_decode($dump, true);
+    //$dump = file_get_contents("server/client.dump");
+    //$obj = json_decode($dump, true);
     $pcname =  array_values($obj)[$pccount]["id"];
     $ipaddr =  array_values($obj)[$pccount]["ip"];
     ?>
