@@ -24,7 +24,7 @@ io.on('connection', function(socket) {
 
     socket.on('kill_process', function(data) {
         console.log("killing process " + data.pid + " on " + data.pcusername);
-        
+
         //sockets[parseInt(data.id)].emit("client_kill_process", data.pid);
         io.sockets.emit("client_kill_process", data.pid + "," + data.pcusername);
 
@@ -36,7 +36,7 @@ io.on('connection', function(socket) {
 
     socket.on('spawn_process', function(data) {
         console.log("spawning process " + data.pid + " on " + data.pcusername);
-        
+
         io.sockets.emit("client_spawn_process", data.pid + "," + data.pcusername);
 
 
@@ -45,7 +45,7 @@ io.on('connection', function(socket) {
     });
 
     socket.on('show_alert_to_user', function(data) {
-        
+
         io.sockets.emit("show_alert", data.pcusername + "," + data.message);
 
 
@@ -54,14 +54,14 @@ io.on('connection', function(socket) {
     });
 
     socket.on('take_screenshot', function(data) {
-        
+
         io.sockets.emit("client_take_screenshot", data.pcusername);
         //clientList[data].
         socket.disconnect();
     });
 
     socket.on('monitor_off', function(data) {
-        
+
         io.sockets.emit("client_monitor_off", data.pcusername);
         //clientList[data].
         socket.disconnect();
@@ -78,54 +78,54 @@ io.on('connection', function(socket) {
 
         fs.writeFile("client.dump", JSON.stringify(clientList), function(err) {
             console.log("writing to file...");
-            if(err) {
+            if (err) {
                 return console.log(err);
             }
-            
-        }); 
 
-    },2000);
+        });
+
+    }, 2000);
 
 
     //run once
-    setTimeout(function() { 
+    setTimeout(function() {
         socket.emit('get_memory_proc');
     }, 2000);
 
-    setInterval(function() { 
+    setInterval(function() {
         socket.emit('get_memory_proc');
     }, 30000);
-    
-    
-    
+
+
+
     socket.on('ident', function(data) {
         console.log("Online " + data.ident + " from " + data.ip);
-        clientList[socket] = { id: data.ident, ip: data.ip, du: 0, mu: 0, nu: 0, cu:0, pr:0, enu: 0};
+        clientList[socket.id] = { id: data.ident, ip: data.ip, du: 0, mu: 0, nu: 0, cu: 0, pr: 0, enu: 0 };
     });
 
-    
-    
+
+
 
     socket.on('disk_usage_response', function(data) {
-        clientList[socket].du = data;
+        clientList[socket.id].du = data;
     });
     socket.on('memory_usage_response', function(data) {
-        clientList[socket].mu = data;
+        clientList[socket.id].mu = data;
     });
     socket.on('network_usage_response', function(data) {
-        clientList[socket].nu = data;
-        
+        clientList[socket.id].nu = data;
+
     });
     socket.on('enetwork_usage_response', function(data) {
-        clientList[socket].enu = data;
-        
+        clientList[socket.id].enu = data;
+
     });
     socket.on('cpu_usage_response', function(data) {
-        clientList[socket].cu = data;
+        clientList[socket.id].cu = data;
     });
 
     socket.on('memory_proc_response', function(data) {
-        clientList[socket].pr = data;
+        clientList[socket.id].pr = data;
     });
 
 
