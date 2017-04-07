@@ -32,7 +32,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="record.php">Record<span class="sr-only">(current)</span></a></li>
         <li  class="active"><a href="statistics.php">Statistics</a></li>
         <li><a href="pc.php">PC</a></li>
         <li><a href="alert.php">Alert</a></li>
@@ -57,11 +56,11 @@
                             <div class="col-md-6 col-sm-12">
                                   <div class="about-thumb">
                                       <div class="wow fadeInUp section-title" >
-                                            <h1>Network Police</h1>
-                                            <p class="color-yellow">Sed vulputate vitae diam quis bibendum</p>
+                                            <h1 style="padding-left:6px">Network Police</h1>
+                                            <p class="color-red">Network manager software</p>
                                       </div>
                                       <div class="wow fadeInUp" >
-                                            <p>Phasellus vulputate tellus nec tortor varius elementum. Curabitur at pulvinar ante. Duis dui urna, faucibus eget felis eu, iaculis congue sem. Mauris convallis eros massa.</p>
+                                            <p>Software can be used to monitor all machines on the network. The network usage as well as the applications being accessed by them can be monitored. Remote access and machine status can also be controlled.</p>
                                             
                                       </div>
                                   </div>
@@ -69,7 +68,7 @@
 
                             
                             <div class="bg-red col-md-3 col-sm-6">
-                                                                   
+                                            <img src="img/logo.png" style="width:82%; padding:10% 0% 5% 15%">                       
                                                                  
                             </div>
 
