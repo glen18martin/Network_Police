@@ -106,15 +106,39 @@
                         }
                         require 'config.php';
 						
-						$result = mysql_query("SELECT * FROM pc_usage");
+						$result = mysql_query("SELECT * FROM pc_usage where status = 1");
 						
 						       while($row = mysql_fetch_array($result)){
+								   echo 
+								   
+								   "<div id=".$row['pc_id']." class='gallery_product col-lg-2 col-md-2 col-sm-2 col-xs-4 filter ON'>
+									<img src='img/on.png' class='img-responsive'><a style='color:white;font-weight:bold' href='record.php?id='".$row['pc_id']."'>".$row['pc_id']."</a>
+								</div>";
+							   }
+							   
+							   
+							   
+						$result2 = mysql_query("SELECT * FROM pc_usage where status = 0");
+						
+						       while($row = mysql_fetch_array($result2)){
 								   echo 
 								   
 								   "<div id=".$row['pc_id']." class='gallery_product col-lg-2 col-md-2 col-sm-2 col-xs-4 filter OFF'>
 									<img src='img/off.png' class='img-responsive'><a style='color:white;font-weight:bold' href='record.php?id='".$row['pc_id']."'>".$row['pc_id']."</a>
 								</div>";
 							   }
+							   
+							   $result3 = mysql_query("SELECT * FROM pc_usage where status = -1");
+						
+						       while($row = mysql_fetch_array($result3)){
+								   echo 
+								   
+								   "<div id=".$row['pc_id']." class='gallery_product col-lg-2 col-md-2 col-sm-2 col-xs-4 filter spray'>
+									<img src='img/er.png' class='img-responsive'><a style='color:white;font-weight:bold' href='record.php?id='".$row['pc_id']."'>".$row['pc_id']."</a>
+								</div>";
+							   }
+							   
+							   
                         ?>
 
                         <!-- 
