@@ -86,9 +86,9 @@ if( isset($_POST["action"])=='delete' && isset($_POST["app_name"]))
 	   <form>
         <div class="col-md-4"><input class="form-control" type="text" id="name" placeholder="Application Name"></div>
         <div class="col-md-4"><input class="form-control" type="text" id="email" placeholder="Hash Value"></div>
-    	<input type="button" class="add-row btn btn-primary" value="Add Row">
+    	<input type="button" class="add-row btn btn-primary" value="Block">
     </form>
-    <table>
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Select</th>
@@ -114,7 +114,7 @@ if( isset($_POST["action"])=='delete' && isset($_POST["app_name"]))
             
         </tbody>
     </table>
-    <button type="button" class="delete-row btn btn-danger">Delete Row</button>
+    <button type="button" class="delete-row btn btn-danger">Unblock</button>
 	
     </div>
 
