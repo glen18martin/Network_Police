@@ -115,32 +115,32 @@
                             <div class="bg-yellow col-md-3 col-sm-6">
                                   <div class="wow fadeInUp color-white service-thumb">
                                       <i class="fa fa-desktop"></i>
-                                            <h3>Interface Design</h3>
-                                            <p class="color-white">Phasellus vulputate tellus nec tortor varius elementum. Curabitur at pulvinar ante.</p>
+                                            <h3>Average RAM Usage</h3>
+                                            <p class="color-white"><h1>50%</h1></p>
                                   </div>
                             </div>
 
                             <div class="col-md-3 col-sm-6">
                                   <div class="wow fadeInUp color-white service-thumb" >
                                       <i class="fa fa-paper-plane"></i>
-                                            <h3>Media Strategy</h3>
-                                            <p class="color-white">Curabitur at pulvinar ante. Duis dui urna, faucibus eget felis eu, iaculis congue sem.</p>
+                                            <h3>Total Network Usage</h3>
+                                            <p class="color-white"><h1>85%</h1></p>
                                   </div>
                             </div>
 
                             <div class="bg-dark col-md-3 col-sm-6">
                                   <div class="wow fadeInUp color-white service-thumb">
                                       <i class="fa fa-table"></i>
-                                            <h3>Mobile App</h3>
-                                            <p class="color-white">Mauris convallis eros massa, vitae euismod arcu tempus ut. Quisque viverra iaculis.</p>
+                                            <h3>Blacklist</h3>
+                                            <p class="color-white"><h2>comp100</h2></p>
                                   </div>
                             </div>
 
                             <div class="bg-white col-md-3 col-sm-6">
                                   <div class="wow fadeInUp service-thumb" >
                                       <i class="fa fa-html5"></i>
-                                            <h3>Coding</h3>
-                                            <p>Mauris convallis eros massa, vitae euismod arcu tempus ut. Quisque viverra iaculis.</p>
+                                            <h3>Total Connections</h3>
+                                            <p><h1>2</h1></p>
                                   </div>
                             </div>
 
